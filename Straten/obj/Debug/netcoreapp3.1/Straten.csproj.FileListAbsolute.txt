@@ -1,0 +1,33 @@
+C:\Gdrive\Straten\obj\Debug\netcoreapp3.1\Straten.csprojAssemblyReference.cache
+C:\Gdrive\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfoInputs.cache
+C:\Gdrive\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfo.cs
+C:\Gdrive\Straten\bin\Debug\netcoreapp3.1\Straten.exe
+C:\Gdrive\Straten\bin\Debug\netcoreapp3.1\Straten.deps.json
+C:\Gdrive\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.json
+C:\Gdrive\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.dev.json
+C:\Gdrive\Straten\bin\Debug\netcoreapp3.1\Straten.dll
+C:\Gdrive\Straten\bin\Debug\netcoreapp3.1\Straten.pdb
+C:\Gdrive\Straten\obj\Debug\netcoreapp3.1\Straten.dll
+C:\Gdrive\Straten\obj\Debug\netcoreapp3.1\Straten.pdb
+C:\Users\brent\Desktop\Straten\bin\Debug\netcoreapp3.1\Straten.exe
+C:\Users\brent\Desktop\Straten\bin\Debug\netcoreapp3.1\Straten.deps.json
+C:\Users\brent\Desktop\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.json
+C:\Users\brent\Desktop\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.dev.json
+C:\Users\brent\Desktop\Straten\bin\Debug\netcoreapp3.1\Straten.dll
+C:\Users\brent\Desktop\Straten\bin\Debug\netcoreapp3.1\Straten.pdb
+C:\Users\brent\Desktop\Straten\obj\Debug\netcoreapp3.1\Straten.csprojAssemblyReference.cache
+C:\Users\brent\Desktop\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfoInputs.cache
+C:\Users\brent\Desktop\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfo.cs
+C:\Users\brent\Desktop\Straten\obj\Debug\netcoreapp3.1\Straten.dll
+C:\Users\brent\Desktop\Straten\obj\Debug\netcoreapp3.1\Straten.pdb
+C:\School\Visual Studio\Straten\bin\Debug\netcoreapp3.1\Straten.exe
+C:\School\Visual Studio\Straten\bin\Debug\netcoreapp3.1\Straten.deps.json
+C:\School\Visual Studio\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.json
+C:\School\Visual Studio\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.dev.json
+C:\School\Visual Studio\Straten\bin\Debug\netcoreapp3.1\Straten.dll
+C:\School\Visual Studio\Straten\bin\Debug\netcoreapp3.1\Straten.pdb
+C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.csprojAssemblyReference.cache
+C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfoInputs.cache
+C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfo.cs
+C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.dll
+C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.pdb
