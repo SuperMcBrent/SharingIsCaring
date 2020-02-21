@@ -11,7 +11,7 @@ Please make sure to provide source material.
 
 Each problem's data lives in its own subdirectory under `SharedExercises/`
 
-This subdirectory includes the (partially-) completed problem with corresponding instructions (as .md or .pdf).
+This directory includes the (partially-) completed problem with corresponding instructions (as .md or .pdf).
 
 ```text
 SharedExercises/
