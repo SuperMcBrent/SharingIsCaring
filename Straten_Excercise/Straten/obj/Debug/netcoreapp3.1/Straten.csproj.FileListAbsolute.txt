@@ -31,3 +31,14 @@ C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfoInpu
 C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfo.cs
 C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.dll
 C:\School\Visual Studio\Straten\obj\Debug\netcoreapp3.1\Straten.pdb
+C:\School\SharingIsCaring\Straten_Excercise\Straten\bin\Debug\netcoreapp3.1\Straten.exe
+C:\School\SharingIsCaring\Straten_Excercise\Straten\bin\Debug\netcoreapp3.1\Straten.deps.json
+C:\School\SharingIsCaring\Straten_Excercise\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.json
+C:\School\SharingIsCaring\Straten_Excercise\Straten\bin\Debug\netcoreapp3.1\Straten.runtimeconfig.dev.json
+C:\School\SharingIsCaring\Straten_Excercise\Straten\bin\Debug\netcoreapp3.1\Straten.dll
+C:\School\SharingIsCaring\Straten_Excercise\Straten\bin\Debug\netcoreapp3.1\Straten.pdb
+C:\School\SharingIsCaring\Straten_Excercise\Straten\obj\Debug\netcoreapp3.1\Straten.csprojAssemblyReference.cache
+C:\School\SharingIsCaring\Straten_Excercise\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfoInputs.cache
+C:\School\SharingIsCaring\Straten_Excercise\Straten\obj\Debug\netcoreapp3.1\Straten.AssemblyInfo.cs
+C:\School\SharingIsCaring\Straten_Excercise\Straten\obj\Debug\netcoreapp3.1\Straten.dll
+C:\School\SharingIsCaring\Straten_Excercise\Straten\obj\Debug\netcoreapp3.1\Straten.pdb

@@ -19,7 +19,7 @@ namespace Straten {
             this.Regios = new Regios();
         }
 
-        private const string repo = @"C:\School\Visual Studio\Straten\repository";
+        private const string repo = @"C:\School\SharingIsCaring\Straten_Excercise\Straten\repository";
 
         private readonly string provincieIDsVlaanderen = Path.Combine(repo, "ProvincieIDsVlaanderen.csv");
         private readonly string provincieInfo = Path.Combine(repo, "ProvincieInfo.csv");
