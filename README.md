@@ -15,7 +15,7 @@ This directory includes the (partially-) completed problem with corresponding in
 
 ```text
 SharedExercises/
-├── Straten
+├── Straten_Excercise
 │   └── description.pdf
 ├── ...
 ├── ExcerciseX
