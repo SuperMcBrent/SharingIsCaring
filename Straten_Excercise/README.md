@@ -8,7 +8,7 @@ Code is quick&dirty and needs to be refactored.
 
 ## Usage
 
-Edit repo path before usage
+Edit repo path in `Program.cs` before usage
 
 ```csharp
 private const string repo = @"C:\School\Visual Studio\Straten\repository";
