@@ -37,20 +37,19 @@ namespace Straten {
             reader = new StreamReader(provincieInfo);
             var provincies = this.Regios[0].Provincies;
             while (!reader.EndOfStream) {
-                // leest enkel nl in, geen fr
                 var line = reader.ReadLine();
                 var values = line.Split(';');
                 if (!String.IsNullOrEmpty(line) && Char.IsLetter(line[0])) {
                     continue;
                 }
-                if (!provincies.Exists(int.Parse(values[1]))) { // hier taalcode aan toevoegen
+                if (!provincies.Exists(int.Parse(values[1]), values[2])) {
                     provincies.Add(new Provincie(line, this.Regios[0]));
                 }
                 Provincie huidigeProvincie = provincies.Get(int.Parse(values[1]));
-                if (huidigeProvincie.Gemeentes.Exists(int.Parse(values[0]),values[2])) {
+                if (huidigeProvincie.Gemeentes.Exists(int.Parse(values[0]), values[2])) {
                     continue;
                 }
-                huidigeProvincie.Gemeentes.Add(new Gemeente(int.Parse(values[0]),values[2]));
+                huidigeProvincie.Gemeentes.Add(new Gemeente(int.Parse(values[0]), values[2], huidigeProvincie));
             }
             stopWatch.Stop();
             Console.WriteLine($"Reading provinciedata took {stopWatch.ElapsedMilliseconds} millis.");
@@ -70,7 +69,6 @@ namespace Straten {
                         if (gemeente.Id.Equals(int.Parse(values[1])) && gemeente.Taalcode.Equals(values[2])) {
                             gemeente.Naam = values[3];
                             gemeente.NaamId = int.Parse(values[0]);
-                            //Console.WriteLine($"Gemeente {gemeente.Naam}({gemeente.Taalcode}) toegevoegd aan {provincie.Naam}.");
                         }
                     }
                 }
@@ -95,7 +93,7 @@ namespace Straten {
                 foreach (var gemeente in provincie.Gemeentes.gemeentes) {
                     var matches = stratenengemeenten.Where(pair => pair.Value == gemeente.Id).Select(pair => pair.Key);
                     foreach (var item in matches) {
-                        gemeente.Straten.Add(new Straat(item));
+                        gemeente.Straten.Add(new Straat(item, gemeente));
                     }
                 }
             }
@@ -226,71 +224,33 @@ namespace Straten {
         }
 
         public void Persist() {
-            string root = @".\";
-
+            string path = @".\";
             Console.WriteLine("Vorige versie opkuisen...");
-            RecursiveDelete(Path.Combine(root, this.Naam));
-
+            RecursiveDelete(Path.Combine(path, this.Naam));
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
-
-            Console.WriteLine("creating dir " + this.Naam);
-            var land = Path.Combine(root, this.Naam);
-            if (!Directory.Exists(land)) {
-                Directory.CreateDirectory(land);
-                Console.WriteLine($"De map {this.Naam} werd successvol aangemaakt.");
-                root = land;
-            }
-
-            Console.WriteLine("path: " + root);
-
-            var regios = this.Regios.regios;
-            root = Path.Combine(root, regios[0].Naam);
-            foreach (var item in regios) {
-                Console.WriteLine("creating dir " + item.Naam);
-                if (!Directory.Exists(root)) {
-                    Directory.CreateDirectory(root);
-                    Console.WriteLine($"De map {item.Naam} werd successvol aangemaakt.");
+            DirectoryInfo rootFolder = DirectoryTools.CreateDir(path, this.Naam);
+            foreach (var regio in this.Regios.regios) {
+                _ = DirectoryTools.CreateDir(rootFolder.FullName, regio.Naam);
+                foreach (var provincie in regio.Provincies.provincies) {
+                    string temp = Path.Combine(rootFolder.FullName, provincie.Regio.Naam);
+                    _ = DirectoryTools.CreateDir(temp, provincie.Naam);
+                    foreach (var gemeente in provincie.Gemeentes.gemeentes) {
+                        if (String.IsNullOrEmpty(gemeente.Naam)) {
+                            continue;
+                        }
+                        temp = Path.Combine(rootFolder.FullName, gemeente.Provincie.Regio.Naam, gemeente.Provincie.Naam);
+                        _ = DirectoryTools.CreateDir(temp, gemeente.Naam);
+                        Console.WriteLine(temp + " <-- " + gemeente.Naam);
+                        string filenaam = Path.Combine(temp,gemeente.Naam, gemeente.Naam + "_Straten.txt");
+                        FileInfo file = new FileInfo(Path.Combine(filenaam));
+                        using StreamWriter sw = file.AppendText();
+                        foreach (var straat in gemeente.Straten.straten) {
+                            sw.WriteLine(straat.Naam);
+                        }
+                    }
                 }
             }
-
-            Console.WriteLine("path: " + root);
-
-            var provincies = this.Regios[0].Provincies.provincies;
-            root = Path.Combine(root, provincies[0].Naam);
-            foreach (var item in provincies) {
-                Console.WriteLine("creating dir " + item.Naam);
-                if (!Directory.Exists(root)) {
-                    Directory.CreateDirectory(root);
-                    Console.WriteLine($"De map {item.Naam} werd successvol aangemaakt.");
-                }
-            }
-
-            Console.WriteLine("path: " + root);
-
-            var gemeentes = this.Regios[0].Provincies[0].Gemeentes.gemeentes;
-            root = Path.Combine(root, gemeentes[0].Naam);
-            foreach (var item in gemeentes) {
-                Console.WriteLine("creating dir " + item.Naam);
-                if (!Directory.Exists(root)) {
-                    Directory.CreateDirectory(root);
-                    Console.WriteLine($"De map {item.Naam} werd successvol aangemaakt.");
-                }
-            }
-
-            Console.WriteLine("path: " + root);
-
-            var straten = this.Regios[0].Provincies[0].Gemeentes[0].Straten.straten;
-            string filenaam = this.Regios[0].Provincies[0].Gemeentes[0].Naam + "_Straten.txt";
-            FileInfo file = new FileInfo(Path.Combine(root, filenaam));
-
-            using StreamWriter sw = file.AppendText();
-            Console.WriteLine("Straten file aangemaakt.");
-            foreach (var item in straten) {
-                sw.WriteLine(item.Naam);
-            }
-
-
         }
 
         public static void RecursiveDelete(string folderpath) {

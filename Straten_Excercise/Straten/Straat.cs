@@ -14,8 +14,9 @@ namespace Straten {
             this.Id = int.Parse(values[0]);
         }
 
-        public Straat(int id) {
+        public Straat(int id, Gemeente gemeente) {
             this.Id = id;
+            this.Gemeente = gemeente;
         }
 
     }

@@ -20,9 +20,10 @@ namespace Straten {
             this.Naam = naam;
         }
 
-        public Gemeente(int id, string taalcode) {
+        public Gemeente(int id, string taalcode, Provincie provincie) {
             this.Id = id;
             this.Taalcode = taalcode;
+            this.Provincie = provincie;
 
             this.Straten = new Straten();
         }

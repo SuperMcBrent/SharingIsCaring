@@ -7,6 +7,7 @@ namespace Straten {
         public int Id { get; set; }
         public string Naam { get; set; }
         public Regio Regio { get; set; }
+        public string Taalcode { get; set; }
 
         public Gemeentes Gemeentes { get; set; }
 
@@ -21,6 +22,7 @@ namespace Straten {
         public Provincie(string provincieCSV, Regio regio) {
             var values = provincieCSV.Split(';');
             this.Id = int.Parse(values[1]);
+            this.Taalcode = values[2];
             this.Naam = values[3];
             this.Regio = regio;
 
@@ -44,6 +46,10 @@ namespace Straten {
 
         public bool Exists(int provincieId) {
             return Array.Exists(provincies, element => element.Id.Equals(provincieId));
+        }
+
+        public bool Exists(int provincieId, string taalcode) {
+            return Array.Exists(provincies, element => element.Id.Equals(provincieId) && element.Taalcode.Equals(taalcode));
         }
 
         public void Remove(int _index) {
