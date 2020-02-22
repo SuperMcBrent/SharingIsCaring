@@ -4,7 +4,12 @@ Excercise 'Straten' received on 2020/02/21.
 
 Solution is Object Oriented.
 
-Code is quick&dirty and needs to be refactored. 
+Code is quick&dirty and needs to be refactored.
+
+Folderbuilder is still broken, "fr" folders are empty.
+
+Need to decide whether i put both the fr and nl cities in both the fr and nl folders,
+or do i sort them nl cities -> nl folders, fr cities -> fr folders?
 
 ## Usage
 
