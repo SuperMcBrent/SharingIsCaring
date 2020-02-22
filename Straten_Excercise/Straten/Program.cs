@@ -20,7 +20,8 @@ namespace Straten {
 
             switch (operation) {
                 case 1:
-                    land.Read(gemeente);
+                    //land.Read(gemeente);
+                    land.ReadAll();
                     land.Persist();
                     break;
                     /*

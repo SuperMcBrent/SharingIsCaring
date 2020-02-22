@@ -20,6 +20,13 @@ namespace Straten {
             this.Naam = naam;
         }
 
+        public Gemeente(int id, string taalcode) {
+            this.Id = id;
+            this.Taalcode = taalcode;
+
+            this.Straten = new Straten();
+        }
+
         public Gemeente(string gemeenteCSV) {
             var values = gemeenteCSV.Split(';');
             this.NaamId = int.Parse(values[0]);
@@ -44,6 +51,10 @@ namespace Straten {
             Count = Count + 1;
             Array.Resize(ref gemeentes, Count);
             gemeentes[(Count - 1)] = _gemeente;
+        }
+
+        public bool Exists(int gemeenteId, string taalcode) {
+            return Array.Exists(gemeentes, element => element.Id.Equals(gemeenteId) && element.Taalcode.Equals(taalcode));
         }
 
         public void Remove(int _index) {

@@ -14,6 +14,10 @@ namespace Straten {
             this.Id = int.Parse(values[0]);
         }
 
+        public Straat(int id) {
+            this.Id = id;
+        }
+
     }
 
     class Straten {

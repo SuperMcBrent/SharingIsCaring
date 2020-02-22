@@ -17,6 +17,15 @@ namespace Straten {
 
             this.Gemeentes = new Gemeentes();
         }
+
+        public Provincie(string provincieCSV, Regio regio) {
+            var values = provincieCSV.Split(';');
+            this.Id = int.Parse(values[1]);
+            this.Naam = values[3];
+            this.Regio = regio;
+
+            this.Gemeentes = new Gemeentes();
+        }
     }
 
     class Provincies {
@@ -33,12 +42,26 @@ namespace Straten {
             provincies[(Count - 1)] = _provincie;
         }
 
+        public bool Exists(int provincieId) {
+            return Array.Exists(provincies, element => element.Id.Equals(provincieId));
+        }
+
         public void Remove(int _index) {
             for (int index = _index; index < provincies.Length - 1; index++) {
                 provincies[index] = provincies[index + 1];
             }
             Count = Count - 1;
             Array.Resize(ref provincies, Count);
+        }
+        
+        public Provincie Get(int Id) {
+            Provincie provincie = null;
+            foreach (var item in provincies) {
+                if (item.Id.Equals(Id)) {
+                    return item;
+                }
+            }
+            return provincie;
         }
     }
 }
