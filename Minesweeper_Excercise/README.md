@@ -4,7 +4,7 @@ Excercise 'Minesweeper' received on 2020/02/16.
 
 Solution is non-'Solid'.
 
-Solution is not 100% finished but is functional and serves as proof of understanding.
+Solution is unfinished but is functional and serves as proof of understanding.
 
 ## Usage
 
