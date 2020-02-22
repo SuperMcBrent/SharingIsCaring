@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Straten {
+    [Serializable]
     class Regio {
 
         public int Id { get; set; }
@@ -21,6 +22,7 @@ namespace Straten {
 
     }
 
+    [Serializable]
     class Regios {
         public Regio[] regios = new Regio[0];
         public int Count { get; private set; }

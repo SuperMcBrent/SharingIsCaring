@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Straten {
+    [Serializable]
     class Straat {
 
         public int Id { get; set; }
@@ -21,6 +22,7 @@ namespace Straten {
 
     }
 
+    [Serializable]
     class Straten {
         public Straat[] straten = new Straat[0];
         public int Count { get; private set; }

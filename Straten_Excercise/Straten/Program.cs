@@ -23,13 +23,15 @@ namespace Straten {
                     //land.Read(gemeente);
                     land.ReadAll();
                     land.Persist();
+                    land.MakeBLOB();
                     break;
-                    /*
+
                 default:
                 case 2:
-                    land.Load();
+                    land.LoadBLOB();
+                    land.Persist();
                     break;
-                    */
+
             }
 
             //Exporters.FileExporter fileExporter = new Exporters.FileExporter(land);

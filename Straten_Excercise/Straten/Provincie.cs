@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Straten {
+    [Serializable]
     class Provincie {
         public int Id { get; set; }
         public string Naam { get; set; }
@@ -30,6 +31,7 @@ namespace Straten {
         }
     }
 
+    [Serializable]
     class Provincies {
         public Provincie[] provincies = new Provincie[0];
         public int Count { get; private set; }

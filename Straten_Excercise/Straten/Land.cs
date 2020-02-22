@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Straten {
+    [Serializable]
     class Land {
 
         public int Id { get; set; }
         public string Naam { get; set; }
         public string TaalCode { get; set; }
+
+        readonly string path = @".\";
 
         public Regios Regios { get; set; }
 
@@ -132,6 +137,10 @@ namespace Straten {
             stopWatch.Reset();
         }
 
+        /// <summary>
+        /// not 100% functional, for better results use upgraded non-selectve ReadAll()
+        /// </summary>
+        /// <param name="targetGemeente"></param>
         public void Read(string targetGemeente) {
             long totalTimeElapsed = 0;
             StreamReader reader;
@@ -224,7 +233,6 @@ namespace Straten {
         }
 
         public void Persist() {
-            string path = @".\";
             Console.WriteLine("Vorige versie opkuisen...");
             RecursiveDelete(Path.Combine(path, this.Naam));
             Console.WriteLine("Press any key to continue...");
@@ -241,7 +249,7 @@ namespace Straten {
                         }
                         temp = Path.Combine(rootFolder.FullName, gemeente.Provincie.Regio.Naam, gemeente.Provincie.Naam);
                         _ = DirectoryTools.CreateDir(temp, gemeente.Naam);
-                        Console.WriteLine(temp + " <-- " + gemeente.Naam);
+                        //Console.WriteLine(temp + " <-- " + gemeente.Naam);
                         string filenaam = Path.Combine(temp,gemeente.Naam, gemeente.Naam + "_Straten.txt");
                         FileInfo file = new FileInfo(Path.Combine(filenaam));
                         using StreamWriter sw = file.AppendText();
@@ -251,6 +259,28 @@ namespace Straten {
                     }
                 }
             }
+            Console.WriteLine("Folders OK");
+        }
+
+        public void MakeBLOB() {
+            string filename = "Straten.bin";
+            RecursiveDelete(Path.Combine(path, filename));
+            IFormatter f = new BinaryFormatter();
+            Stream s = new FileStream(Path.Combine(path,filename), FileMode.Create, FileAccess.Write);
+            f.Serialize(s, this);
+            Console.WriteLine("Write OK");
+            s.Close();
+        }
+
+        public void LoadBLOB() {
+            string filename = "Straten.bin";
+            IFormatter f = new BinaryFormatter();
+            Stream s = new FileStream(Path.Combine(path, filename), FileMode.Open, FileAccess.Read);
+
+            Land loadedLand = (Land)f.Deserialize(s);
+            this.Regios = loadedLand.Regios;
+            Console.WriteLine("Read OK");
+            s.Close();
         }
 
         public static void RecursiveDelete(string folderpath) {
