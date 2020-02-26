@@ -268,7 +268,15 @@ namespace Straten {
         protected void PrintToekenningen(string path, string gemeente) {
             Console.WriteLine(path + " <-- " + gemeente);
         }
-
+        // bij deze methode moet alles apart geencapsuleerd worden
+        // #if DEBUG
+        // #endif
+        // Dit werkt ook
+        // #if DEBUG
+        //         public const String value = "iets voor te debuggen";
+        // #else
+        //         public const String value = "iets anders voor de release versie";
+        // #endif
         public void MakeBLOB() {
             string filename = "Straten.bin";
             RecursiveDelete(Path.Combine(path, filename));
