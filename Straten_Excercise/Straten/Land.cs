@@ -252,7 +252,9 @@ namespace Straten {
                         }
                         temp = Path.Combine(rootFolder.FullName, gemeente.Provincie.Regio.Naam, gemeente.Provincie.Naam);
                         _ = DirectoryTools.CreateDir(temp, gemeente.Naam);
-                        //Console.WriteLine(temp + " <-- " + gemeente.Naam);
+
+                        PrintToekenningen(temp, gemeente.Naam);
+
                         string filenaam = Path.Combine(temp,gemeente.Naam, gemeente.Naam + "_Straten.txt");
                         FileInfo file = new FileInfo(Path.Combine(filenaam));
                         using StreamWriter sw = file.AppendText();
@@ -265,6 +267,19 @@ namespace Straten {
             Console.WriteLine("Folders OK");
         }
 
+        [Conditional("DEBUG")]
+        protected void PrintToekenningen(string path, string gemeente) {
+            Console.WriteLine(path + " <-- " + gemeente);
+        }
+        // bij deze methode moet alles apart geencapsuleerd worden
+        // #if DEBUG
+        // #endif
+        // Dit werkt ook
+        // #if DEBUG
+        //         public const String value = "iets voor te debuggen";
+        // #else
+        //         public const String value = "iets anders voor de release versie";
+        // #endif
         public void MakeBLOB() {
             string filename = "Straten.bin";
             RecursiveDelete(Path.Combine(path, filename));
