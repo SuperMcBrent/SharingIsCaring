@@ -232,6 +232,9 @@ namespace Straten {
             stopWatch.Reset();
         }
 
+        /// <summary>
+        /// aka "Folderbuilder"
+        /// </summary>
         public void Persist() {
             Console.WriteLine("Vorige versie opkuisen...");
             RecursiveDelete(Path.Combine(path, this.Naam));
