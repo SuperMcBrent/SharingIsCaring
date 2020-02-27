@@ -6,7 +6,7 @@ const asciiA = 65;
 let board = [];
 let guesses = [];
 let colors = [];
-let code = "";
+let code;
 
 let currentLine = 0;
 
@@ -15,12 +15,15 @@ const squareSize = 20;
 const offsetTop = 20;
 const offsetLeft = 20;
 
-const setup = () => {
+let setup = () => {
     CreateColors(complexity);
     console.log(colors);
-    CreateCode();
+    code = CreateCode();
     console.log(code);
-    Compare(code,"AAAA");
+    //Compare(code,"AAAA");
+    while (currentLine < 30) {
+        Compare(code,CreateCode());
+    }
 }
 
 let AddGuess = (guessString) => {
@@ -38,7 +41,7 @@ let DrawGuess = (guess,line) => {
 }
 
 let DrawSquare = (y,x,code) => {
-    console.log("Drawing " + code + " at top: " + y + ", left: " + x + ".");
+    //console.log("Drawing " + code + " at top: " + y + ", left: " + x + ".");
     let baseVakje = document.createElement("p");
     baseVakje.classList.add("vakje");
     baseVakje.id = x + "," + y;
@@ -53,7 +56,7 @@ let DrawSquare = (y,x,code) => {
     });
     //baseVakje.onclick = function() {onclickEvent(x,y);};
     //baseVakje.onclick = () => {onclickEvent(x,y);};
-    let baseVakjeContent = document.createTextNode(code);
+    let baseVakjeContent = document.createTextNode("");
     baseVakje.appendChild(baseVakjeContent);
     document.body.appendChild(baseVakje);
 }
@@ -80,7 +83,7 @@ let Compare = (code, guess) => {
     // verkeerde plaatsjes tellen en eruithalen om double hits tegen te gaan
     for (let i = 0; i < code.length; i++) {
         if (codeString[i] !== '_') {
-            console.log(codeString[i]);
+            //console.log(codeString[i]);
             if (guessString.includes(codeString[i])) {
                 var a = guessString.indexOf(codeString[i]);
                 guessString[a] = '_';
@@ -92,6 +95,7 @@ let Compare = (code, guess) => {
     console.log("Good: " + good + ", almost: " + almost + ".");
     if (good === code.length) {
         console.log("You win!");
+        //window.alert("You win!")
         //trigger winEvent.
     }
 
@@ -103,9 +107,11 @@ let Compare = (code, guess) => {
 }
 
 let CreateCode = () => {
+    let tempCode = "";
     for (let index = 0; index < length; index++) {
-        code += String.fromCharCode(Math.floor(Math.random()*4+asciiA));        
+        tempCode += String.fromCharCode(Math.floor(Math.random()*complexity+asciiA));        
     }
+    return tempCode;
 }
 
 window.addEventListener("load", setup);
