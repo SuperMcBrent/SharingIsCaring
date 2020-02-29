@@ -1,7 +1,26 @@
 .vakje {
-width: 20px;
-height: 20px;
-margin: 0;
-background-color: rgb(64, 64, 64);
-text-align: center;
+    margin: 0;
+    background-color: rgb(48, 48, 216);
+    text-align: center;
+    position: absolute;
+    cursor: default;
+    border: 1px solid black;
+}
+
+.token {
+    margin: 0;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 0);
+    text-align: center;
+    position: absolute;
+    cursor: default;
+}
+
+.selector {
+    margin: 0;
+    background-color: rgb(92, 90, 90);
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid black;
 }
